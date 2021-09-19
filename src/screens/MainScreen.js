@@ -1,19 +1,30 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { Button, FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { Post } from '../components/Post'
+import { DATA } from '../data'
 
-export function MainScreen({ }) {
+export function MainScreen({ navigation }) {
+	const openPostHandler = (post) => {
+		navigation.push('contact', { postID: post.id })
+	}
+
 	return (
 		<View style={ styles.center } >
-			<Text>MainScreen</Text>
+			<FlatList
+				data={ DATA }
+				keyExtractor={ post => post.id.toString() }
+				renderItem={ ({ item }) => {
+					return <Post post={ item } onOpen={ openPostHandler } />
+				} }
+			/>
 		</View>
 	)
 }
 
 const styles = StyleSheet.create({
 	center: {
-		flex: 1,
-		justifyContent: 'center',
-		alignItems: 'center',
+		padding: 10,
+
 
 	}
 })

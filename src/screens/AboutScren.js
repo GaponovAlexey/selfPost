@@ -1,10 +1,10 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 
-export function AboutScren({ }) {
+export function AboutScren({ route }) {
 	return (
 		<View style={ styles.center } >
-			<Text>AboutScren</Text>
+			<Text>{route.params.full}</Text>
 		</View>
 	)
 }

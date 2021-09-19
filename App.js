@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 //import { AppLoading } from 'expo';
 import AppLoading from 'expo-app-loading';
 import { bootstrap } from './src/bootstrap'
-import { MainScreen } from './src/screens/MainScreen';
+import { MyStack } from './src/navigation/AppNavigation';
 
 
 export default function App() {
@@ -20,10 +20,6 @@ export default function App() {
   }
 
 
-  return (
-    <View >
-      <MainScreen />
-    </View>
-  );
+  return <MyStack />
 }
 
