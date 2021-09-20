@@ -4,7 +4,7 @@ import { ImageBackground, StyleSheet, Text, TouchableOpacity, View } from 'react
 export function Post({ post, onOpen }) {
 	return (
 		<TouchableOpacity
-			activeOpacity={ 0.7 }
+			activeOpacity={ 0.2 }
 			onPress={ () => onOpen(post) }
 		>
 			<View style={ styles.post } >
@@ -26,15 +26,17 @@ const styles = StyleSheet.create({
 	post: {
 		marginBottom: 12,
 		overflow: 'hidden',
+		borderRadius: 5,
 	},
 	img: {
-		padding: 5,
 		maxHeight: 200,
 		minHeight: 200,
-		width: '100%',
+		//width: '100%',
+		padding: 5,
 	},
 	text: {
-		backgroundColor: 'rgba(0, 0, 0, 0.5)',
+		backgroundColor: 'rgba(0, 0, 0, 0.3)',
+		borderRadius: 5,
 		paddingVertical: 5,
 		alignItems: 'center',
 		width: '100%',
@@ -42,6 +44,6 @@ const styles = StyleSheet.create({
 	},
 	textTitle: {
 		color: '#fff',
-		fontFamily: 'OpenSans-Regular'
+		fontFamily: 'open-Regular'
 	}
 })

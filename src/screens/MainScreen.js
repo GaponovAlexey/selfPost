@@ -4,8 +4,9 @@ import { Post } from '../components/Post'
 import { DATA } from '../data'
 
 export function MainScreen({ navigation }) {
+
 	const openPostHandler = (post) => {
-		navigation.push('contact', { postID: post.id })
+		navigation.push('postScreen', {postID: post.id })
 	}
 
 	return (

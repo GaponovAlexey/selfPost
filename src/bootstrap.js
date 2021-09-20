@@ -3,7 +3,7 @@ import { useFonts } from 'expo-font';
 
 export async function bootstrap() {
 	await Font.loadAsync({
-		'OpenSans-Regular': require('../assets/fonts/OpenSans-Regular.ttf'),
-		'OpenSans-Bold': require('../assets/fonts/OpenSans-Bold.ttf'),
+		'open-Regular': require('../assets/fonts/OpenSans-Regular.ttf'),
+		'open-Bold': require('../assets/fonts/OpenSans-Bold.ttf'),
 	})
 }

@@ -18,13 +18,13 @@ export function MyStack() {
 					headerMode: 'screen',
 					headerStyle: { backgroundColor: Platform.OS === 'android' ? THEME.MAIN_COLOR : '#fff' },
 					headerTintColor: Platform.OS === 'android' ? "#fff" : THEME.MAIN_COLOR,
-					headerTitleStyle: { fontFamily: 'OpenSans-Bold' },
+					headerTitleStyle: { fontFamily: 'open-Bold' },
 				} }
 			>
 				<Stack.Screen name="Home"
 					options={ { title: 'Главная' } }
 					component={ MainScreen } />
-				<Stack.Screen name="contact" options={ { title: 'POST' } } component={ PostScreen } />
+				<Stack.Screen name="postScreen" options={ { title: 'POST' } } component={ PostScreen } />
 				<Stack.Screen name="about" options={ { title: 'About' } } component={ AboutScren } />
 			</Stack.Navigator>
 		</NavigationContainer>
