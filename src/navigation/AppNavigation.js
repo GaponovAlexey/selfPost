@@ -5,9 +5,29 @@ import { MainScreen } from '../screens/MainScreen';
 import { PostScreen } from '../screens/PostScreen';
 import { AboutScren } from '../screens/AboutScren';
 import { THEME } from '../theme';
-import { Platform } from 'react-native';
+import { Platform, Text } from 'react-native';
+import {
+	HeaderButtons,
+	HeaderButton,
+	Item,
+	HiddenItem,
+	OverflowMenu,
+} from 'react-navigation-header-buttons';
 
+import { AppHeaderIcon } from '../components/AppHeaderIcon'
 const Stack = createNativeStackNavigator();
+
+
+
+let postScreenOption = {
+	title: 'Главная',
+	headerRight: () => <HeaderButtons HeaderButtonComponent={ AppHeaderIcon }>
+		<Item onPress={ () => console.log('you') } title='takePhoto1' iconName='ios-camera' />
+	</HeaderButtons>,
+}
+
+
+
 
 export function MyStack() {
 	return (
@@ -22,7 +42,7 @@ export function MyStack() {
 				} }
 			>
 				<Stack.Screen name="Home"
-					options={ { title: 'Главная' } }
+					options={ postScreenOption }
 					component={ MainScreen } />
 				<Stack.Screen name="postScreen" options={ { title: 'POST' } } component={ PostScreen } />
 				<Stack.Screen name="about" options={ { title: 'About' } } component={ AboutScren } />

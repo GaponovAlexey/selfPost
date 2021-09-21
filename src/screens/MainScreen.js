@@ -1,7 +1,9 @@
 import React from 'react'
 import { Button, FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+
 import { Post } from '../components/Post'
 import { DATA } from '../data'
+
 
 export function MainScreen({ navigation }) {
 
