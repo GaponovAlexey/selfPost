@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Alert, Button, FlatList, Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { DATA } from '../data'
 import { THEME } from '../theme'
 
-export function PostScreen({ navigation, route }) {
+export function PostScreen({ navigation, route, }) {
 	const postID = route.params.postID
+	let bookeds = route.params.booked
 	const backHandler = () => {
 		Alert.alert(
 			"DELETE",
@@ -14,12 +15,13 @@ export function PostScreen({ navigation, route }) {
 					text: "Cancel",
 					style: "cancel"
 				},
-				{ text: "delete", style: 'destructive', onPress: () => {  } }
+				{ text: "delete", style: 'destructive', onPress: () => { } }
 			],
-			{ cancelable: false}
+			{ cancelable: false }
 		);
 	}
 	const post = DATA.find(e => e.id === postID)
+
 	return (
 		<ScrollView >
 			<Image style={ styles.img } source={ { uri: post.img } } />
