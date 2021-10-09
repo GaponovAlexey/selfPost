@@ -8,7 +8,7 @@ import { DATA } from '../data'
 
 
 export function MainScreen({ navigation }) {
-	console.log(navigation);
+	
 	const openPostHandler = (post) => {
 		navigation.push('postScreen', {postID: post.id, booked: post.booked, })
 	}
