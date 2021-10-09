@@ -8,6 +8,7 @@ import { THEME } from '../theme';
 import { Platform, Text } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
 
 
@@ -50,13 +51,23 @@ function MyTabs() {
 	);
 }
 
+const Drawer = createDrawerNavigator();
+
+function MyDrawer() {
+	return (
+		<Drawer.Navigator screenOptions={ { headerShown: false } } >
+			<Drawer.Screen name="Home" component={ MyTabs } />
+			<Drawer.Screen name="Star" component={ StakAbout } />
+		</Drawer.Navigator>
+	);
+}
 
 
 
 export const Navigatopr = () => {
 	return (
 		<NavigationContainer>
-			<MyTabs />
+			<MyDrawer />
 		</NavigationContainer >
 	)
 }

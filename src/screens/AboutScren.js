@@ -13,7 +13,7 @@ export function AboutScren({ navigation }) {
 				<Item onPress={ () => console.log('you') } title='takePhoto1' iconName='ios-camera' />
 			</HeaderButtons>,
 			headerLeft: () => <HeaderButtons HeaderButtonComponent={ AppHeaderIcon }>
-				<Item onPress={ () => console.log('you') } title='takePhoto1' iconName='ios-menu' />
+				<Item onPress={ () => navigation.toggleDrawer() } title='takePhoto1' iconName='ios-menu' />
 			</HeaderButtons>
 		})
 	}, [])
