@@ -12,59 +12,46 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 
 
+
+const Stack = createNativeStackNavigator();
+//Header
+function MyStack() {
+	return (
+		<Stack.Navigator
+			initialRouteName="Home"
+			screenOptions={ {
+				headerMode: 'screen',
+				headerStyle: { backgroundColor: Platform.OS === 'android' ? THEME.MAIN_COLOR : '#fff' },
+				headerTintColor: Platform.OS === 'android' ? "#fff" : THEME.MAIN_COLOR,
+				headerTitleStyle: { fontFamily: 'open-Bold' },
+			} }
+		>
+			<Stack.Screen name="Home" component={ MainScreen } />
+			<Stack.Screen name="postScreen" component={ PostScreen } />
+			<Stack.Screen name="about" options={ { title: 'About' } } component={ AboutScren } />
+		</Stack.Navigator>
+	);
+}
+
 const Tab = createBottomTabNavigator();
 
 function MyTabs() {
 	return (
-		<Tab.Navigator>
-			<Tab.Screen name="Home" component={ MainScreen } />
+		<Tab.Navigator
+			screenOptions={ { headerShown: false } }
+		>
+			<Tab.Screen name="Home" component={ MyStack } />
 			<Tab.Screen name="postScreen" component={ PostScreen } />
 		</Tab.Navigator>
 	);
 }
 
 
-const Stack = createNativeStackNavigator();
-//mainScreen
-let MainScreenOption = {
-	title: 'Главная',
-	headerRight: () => <HeaderButtons HeaderButtonComponent={ AppHeaderIcon }>
-		<Item onPress={ () => console.log('you') } title='takePhoto1' iconName='ios-camera' />
-	</HeaderButtons>,
-	headerLeft: () => <HeaderButtons HeaderButtonComponent={ AppHeaderIcon }>
-		<Item onPress={ () => console.log('you') } title='takePhoto1' iconName='ios-menu' />
-	</HeaderButtons>,
-}
 
-//postScreen
-let PostScrennOption = {
-	title: 'POST',
-	headerRight: () => <HeaderButtons HeaderButtonComponent={ AppHeaderIcon }>
-		<Item onPress={ () => console.log('you') } title='takePhoto1' iconName='ios-star' />
-	</HeaderButtons>,
-	headerLeft: () => <HeaderButtons HeaderButtonComponent={ AppHeaderIcon }>
-		<Item onPress={ () => console.log('you') } title='takePhoto1' iconName='ios-menu' />
-	</HeaderButtons>,
-}
-//Header
-export function MyStack() {
+export const Navigatopr = () => {
 	return (
 		<NavigationContainer>
-			<Stack.Navigator
-				initialRouteName="Home"
-				screenOptions={ {
-					headerMode: 'screen',
-					headerStyle: { backgroundColor: Platform.OS === 'android' ? THEME.MAIN_COLOR : '#fff' },
-					headerTintColor: Platform.OS === 'android' ? "#fff" : THEME.MAIN_COLOR,
-					headerTitleStyle: { fontFamily: 'open-Bold' },
-				} }
-			>
-				<Stack.Screen name="Home" options={ MainScreenOption } component={ MainScreen } />
-				<Stack.Screen name="postScreen" options={ PostScrennOption } component={ PostScreen } />
-				<Stack.Screen name="about" options={ { title: 'About' } } component={ AboutScren } />
-			</Stack.Navigator>
+			<MyTabs />
 		</NavigationContainer >
-	);
+	)
 }
-
-//options = { {
