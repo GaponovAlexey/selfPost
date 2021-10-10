@@ -1,12 +1,13 @@
 import React, { useEffect, useLayoutEffect, useState } from 'react'
 import { Alert, Button,  Image, ScrollView, StyleSheet, Text, View } from 'react-native'
 import { HeaderButtons, Item } from 'react-navigation-header-buttons'
+import { useSelector } from 'react-redux'
 import { AppHeaderIcon } from '../components/AppHeaderIcon'
 
-import { DATA } from '../data'
 import { THEME } from '../theme'
 
 export function PostScreen({ navigation, route, }) {
+	const DATA = useSelector(state => state.post.allPosts)
 	const postID = route.params.postID
 	const deletPost = () => {
 		Alert.alert(
@@ -23,7 +24,6 @@ export function PostScreen({ navigation, route, }) {
 		);
 	}
 	const post = DATA.find(e => e.id === postID)
-
 
 	useLayoutEffect(() => {
 		navigation.setOptions({

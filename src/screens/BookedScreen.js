@@ -3,9 +3,10 @@ import { StyleSheet, Text, View } from 'react-native'
 import PostList from '../components/PostList'
 import { HeaderButtons, Item } from 'react-navigation-header-buttons'
 import { AppHeaderIcon } from '../components/AppHeaderIcon'
-import { DATA } from '../data'
+import { useSelector } from 'react-redux'
 
 export function BookedScreen({ navigation, route }) {
+	const DATA = useSelector(state => state.post.allPosts)
 	const postSc = (post) => {
 		navigation.push('postScreen', { postID: post.id, booked: post.booked, })
 	}

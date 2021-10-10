@@ -1,17 +1,24 @@
-import React, { useLayoutEffect } from 'react'
+import React, { useEffect, useLayoutEffect } from 'react'
 import { Button, FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
+import { useDispatch, useSelector } from 'react-redux';
 import { AppHeaderIcon } from '../components/AppHeaderIcon';
 
 import { Post } from '../components/Post'
-import { DATA } from '../data'
+//import { DATA } from '../data'
+import { ActionPost } from '../redux/PostReducer';
 
 
 export function MainScreen({ navigation }) {
 	
 	const openPostHandler = (post) => {
-		navigation.push('postScreen', {postID: post.id, booked: post.booked, })
+		navigation.push('postScreen', { postID: post.id, booked: post.booked, })
 	}
+	const dispatch = useDispatch()
+	
+	useEffect(() => {
+		dispatch(ActionPost())
+	}, [])
 
 	useLayoutEffect(() => {
 		navigation.setOptions({
@@ -26,7 +33,8 @@ export function MainScreen({ navigation }) {
 	}, [])
 
 
-
+	const DATA = useSelector(state => state.post.allPosts)
+	
 	return (
 		<View style={ styles.center } >
 			<FlatList

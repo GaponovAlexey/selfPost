@@ -34,7 +34,7 @@ function StakAbout() {
 }
 
 const Tab = createBottomTabNavigator();
-function MyTabs() {
+function Tabs() {
 	return (
 		<Tab.Navigator screenOptions={ { headerShown: false } } >
 			<Tab.Screen
@@ -53,13 +53,14 @@ function MyTabs() {
 	);
 }
 
+
 const Drawer = createDrawerNavigator();
 
 function MyDrawer() {
 	return (
 		<Drawer.Navigator screenOptions={ { headerShown: false } } >
-			<Drawer.Screen name="Home" component={ MyTabs } />
-			<Drawer.Screen name="Star" component={ StakAbout } />
+			<Drawer.Screen name="Home" component={ Tabs } />
+			<Drawer.Screen name="Star" component={ Tabs } />
 		</Drawer.Navigator>
 	);
 }
