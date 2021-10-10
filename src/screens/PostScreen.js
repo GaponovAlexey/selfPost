@@ -8,7 +8,6 @@ import { THEME } from '../theme'
 
 export function PostScreen({ navigation, route, }) {
 	const postID = route.params.postID
-	let bookeds = route.params.booked
 	const deletPost = () => {
 		Alert.alert(
 			"DELETE",
@@ -33,7 +32,7 @@ export function PostScreen({ navigation, route, }) {
 				<Item onPress={ () => console.log('you') } title='takePhoto1' iconName='ios-star' />
 			</HeaderButtons>,
 			headerLeft: () => <HeaderButtons HeaderButtonComponent={ AppHeaderIcon }>
-				<Item onPress={ () => console.log('you') } title='takePhoto1' iconName='ios-menu' />
+				<Item onPress={ () => navigation.toggleDrawer()} title='takePhoto1' iconName='ios-menu' />
 			</HeaderButtons>
 		})
 	}, [])

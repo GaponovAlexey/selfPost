@@ -9,6 +9,7 @@ import { Platform, Text } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 import { createDrawerNavigator } from '@react-navigation/drawer';
+import { BookedScreen } from '../screens/BookedScreen';
 
 
 
@@ -26,7 +27,8 @@ function StakMain() {
 function StakAbout() {
 	return (
 		<Stack.Navigator>
-			<Stack.Screen name="about" options={ { title: 'About' } } component={ AboutScren } />
+			<Stack.Screen name="about" options={ { title: 'About' } } component={ BookedScreen } />
+			<Stack.Screen name="postScreen" component={ PostScreen } />
 		</Stack.Navigator>
 	);
 }

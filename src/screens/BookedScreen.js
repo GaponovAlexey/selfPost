@@ -1,19 +1,38 @@
-import React from 'react'
+import React, { useLayoutEffect } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
+import PostList from '../components/PostList'
+import { HeaderButtons, Item } from 'react-navigation-header-buttons'
+import { AppHeaderIcon } from '../components/AppHeaderIcon'
+import { DATA } from '../data'
 
-export function BookedScreen({ }) {
+export function BookedScreen({ navigation, route }) {
+	const postSc = (post) => {
+		navigation.push('postScreen', { postID: post.id, booked: post.booked, })
+	}
+
+
+	const booked = DATA.filter(p => p.booked)
+
+	useLayoutEffect(() => {
+		navigation.setOptions({
+			title: 'Home',
+			headerRight: () => <HeaderButtons HeaderButtonComponent={ AppHeaderIcon }>
+				<Item onPress={ () => console.log('you') } title='takePhoto1' iconName='ios-camera' />
+			</HeaderButtons>,
+			headerLeft: () => <HeaderButtons HeaderButtonComponent={ AppHeaderIcon }>
+				<Item onPress={ () => navigation.toggleDrawer() } title='takePhoto1' iconName='ios-menu' />
+			</HeaderButtons>
+		})
+	}, [])
 	return (
 		<View style={ styles.center } >
-			<Text>BookedScreen</Text>
+			<PostList data={ booked } onOpen={ postSc } />
 		</View>
 	)
 }
 
 const styles = StyleSheet.create({
 	center: {
-		flex: 1,
-		justifyContent: 'center',
-		alignItems: 'center',
 
 	}
 })

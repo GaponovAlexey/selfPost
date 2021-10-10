@@ -8,9 +8,7 @@ export function Post({ post, onOpen }) {
 			onPress={ () => onOpen(post) }
 		>
 			<View style={ styles.post } >
-				<ImageBackground
-					style={ styles.img }
-					source={ { uri: post.img } }>
+				<ImageBackground style={ styles.img } source={ { uri: post.img } }>
 					<View style={ styles.text } >
 						<Text style={ styles.textTitle } >
 							{ new Date(post.date).toLocaleDateString() }
@@ -26,7 +24,7 @@ const styles = StyleSheet.create({
 	post: {
 		marginBottom: 12,
 		overflow: 'hidden',
-		borderRadius: 5,
+		borderRadius: 4,
 	},
 	img: {
 		maxHeight: 200,
