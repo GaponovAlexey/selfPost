@@ -29,7 +29,6 @@ const styles = StyleSheet.create({
 	img: {
 		maxHeight: 200,
 		minHeight: 200,
-		//width: '100%',
 		padding: 5,
 	},
 	text: {
@@ -42,6 +41,5 @@ const styles = StyleSheet.create({
 	},
 	textTitle: {
 		color: '#fff',
-		fontFamily: 'open-Regular'
 	}
 })

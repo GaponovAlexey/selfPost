@@ -3,20 +3,19 @@ import { Button, FlatList, StyleSheet, Text, TouchableOpacity, View } from 'reac
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppHeaderIcon } from '../components/AppHeaderIcon';
-
 import { Post } from '../components/Post'
-//import { DATA } from '../data'
 import { ActionPost } from '../redux/PostReducer';
 
 
 export function MainScreen({ navigation }) {
-	
 	const openPostHandler = (post) => {
 		navigation.push('postScreen', { postID: post.id, booked: post.booked, })
 	}
 	const dispatch = useDispatch()
-	
-	useEffect(() => {
+
+
+
+	useLayoutEffect(() => {
 		dispatch(ActionPost())
 	}, [])
 
@@ -51,7 +50,5 @@ export function MainScreen({ navigation }) {
 const styles = StyleSheet.create({
 	center: {
 		padding: 10,
-
-
 	}
 })

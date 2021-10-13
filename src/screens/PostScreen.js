@@ -1,8 +1,11 @@
-import React, { useEffect, useLayoutEffect, useState } from 'react'
-import { Alert, Button,  Image, ScrollView, StyleSheet, Text, View } from 'react-native'
+import React, { useCallback, useEffect, useLayoutEffect, useState } from 'react'
+import { Alert, Button, Image, ScrollView, StyleSheet, Text, View } from 'react-native'
 import { HeaderButtons, Item } from 'react-navigation-header-buttons'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { AppHeaderIcon } from '../components/AppHeaderIcon'
+import { removePost, ToogleBooked } from '../redux/PostReducer'
+
+
 
 import { THEME } from '../theme'
 
@@ -18,21 +21,33 @@ export function PostScreen({ navigation, route, }) {
 					text: "Cancel",
 					style: "cancel"
 				},
-				{ text: "delete", style: 'destructive', onPress: () => { console.log('delet post') } }
+				{ text: "delete", style: 'destructive', onPress: () => dispatch(removePost(postID)) }
 			],
 			{ cancelable: false }
 		);
 	}
 	const post = DATA.find(e => e.id === postID)
 
+	const dispatch = useDispatch()
+	const booked = useSelector(state => state.post.bookedPosts.some(post => post.id === postID))
+
+	const toogleHandler = () => {
+		useEffect(() => {
+			dispatch(ToogleBooked(postID))
+		}, [dispatch, postID ])
+	}
+
+
+
+	const iconName = booked ? 'ios-star' : 'ios-star-outline'
 	useLayoutEffect(() => {
 		navigation.setOptions({
 			title: 'POST',
 			headerRight: () => <HeaderButtons HeaderButtonComponent={ AppHeaderIcon }>
-				<Item onPress={ () => console.log('you') } title='takePhoto1' iconName='ios-star' />
+				<Item onPress={ () => toogleHandler } title='takePhoto1' iconName={ iconName } />
 			</HeaderButtons>,
 			headerLeft: () => <HeaderButtons HeaderButtonComponent={ AppHeaderIcon }>
-				<Item onPress={ () => navigation.toggleDrawer()} title='takePhoto1' iconName='ios-menu' />
+				<Item onPress={ () => navigation.toggleDrawer() } title='takePhoto1' iconName='ios-menu' />
 			</HeaderButtons>
 		})
 	}, [])
@@ -57,6 +72,5 @@ const styles = StyleSheet.create({
 
 	},
 	onlytext: {
-		fontFamily: ''
 	}
 })
